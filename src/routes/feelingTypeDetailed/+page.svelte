@@ -3,7 +3,7 @@
     import { calendarEventsStore } from "$lib/stores/calendarEventsStore";
     import { fade } from "svelte/transition";
 	import { goto } from "$app/navigation";
-    import OpenAI from 'openai';
+    import Groq from 'groq-sdk';
 
     const feelingTypeText = {
         highEnergyUnpleasant: "High Energy Unpleasant",
@@ -28,12 +28,12 @@
         console.log('submitting');
         console.log(`{\n  \"energy_level\": \"${feelingTypeText[$userFeelingsStore.feelingType!]}\",\n   \"cause\": \"${$userFeelingsStore.reason}\",\n  \"feeling\": \"${$userFeelingsStore.potentialFeelings}\",\n  \"calendar\": ${JSON.stringify($calendarEventsStore)}\n}`);
         
-        const openai = new OpenAI({
+        const groq = new Groq({
             apiKey: '',
             dangerouslyAllowBrowser: true
         });
 
-        const response = await openai.chat.completions.create({
+        const response = await groq.chat.completions.create({
         model: "gpt-4-turbo",
         messages: [
             {

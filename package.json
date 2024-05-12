@@ -47,6 +47,9 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "1.6.5",
+    "groq": "^3.41.1",
+    "groq-js": "^1.8.0",
+    "groq-sdk": "^0.3.3",
     "highlight.js": "11.9.0",
     "openai": "^4.45.0"
   }

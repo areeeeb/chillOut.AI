@@ -3,7 +3,8 @@
     import { userFeelingsStore } from "$lib/stores/userFeelingsStore";
     import { goto } from '$app/navigation';
     import { enhance } from '$app/forms';
-    import OpenAI from 'openai';
+    import Groq from 'groq-sdk';
+
 
     const feelingTypeText = {
         highEnergyUnpleasant: "High Energy Unpleasant",
@@ -15,12 +16,12 @@
     async function handleSubmit() {
         console.log('submitting');
         
-        const openai = new OpenAI({
+        const groq = new Groq({
             apiKey: '',
             dangerouslyAllowBrowser: true
         });
 
-        const response = await openai.chat.completions.create({
+        const response = await groq.chat.completions.create({
             model: 'gpt-4-turbo',
             messages: [
                 {

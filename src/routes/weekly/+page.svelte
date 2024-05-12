@@ -1,7 +1,7 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
-    import OpenAI from 'openai';
+    import Groq from 'groq-sdk';
     import { calendarEventsStore } from '$lib/stores/calendarEventsStore';
 
 
@@ -9,12 +9,12 @@
 
     async function callOpenAI() {
         console.log('calling llm');
-        const openai = new OpenAI({
+        const groq = new Groq({
             apiKey: '',
             dangerouslyAllowBrowser: true
         });
 
-        const response = await openai.chat.completions.create({
+        const response = await groq.chat.completions.create({
         model: "gpt-4-turbo",
         messages: [
                 {

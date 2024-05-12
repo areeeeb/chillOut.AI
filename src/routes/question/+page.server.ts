@@ -1,6 +1,6 @@
 import type { Actions } from './$types';
 import { redirect } from '@sveltejs/kit';
-// import OpenAI from 'openai';
+import Groq from 'groq-sdk';
 
 export const actions = {
 	default: async (event) => {
